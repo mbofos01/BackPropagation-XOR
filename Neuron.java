@@ -4,6 +4,7 @@ import java.util.ArrayList;
  * This object emulates one neuron used in a neural network. Each neuron can get
  * identified by a static counter ID.
  * 
+ * 
  * @author Michail - Panagiotis Bofos
  *
  */
