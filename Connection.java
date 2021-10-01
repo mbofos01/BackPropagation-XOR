@@ -5,7 +5,6 @@ import java.util.ArrayList;
  * help us handle the weights.
  * 
  * @author Michail - Panagiotis Bofos
- * @date 1/10/2021
  */
 public class Connection {
 	/**

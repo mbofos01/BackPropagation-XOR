@@ -10,7 +10,6 @@ import java.util.Scanner;
  * function, weight generation or file IO handling
  * 
  * @author Michail - Panagiotis Bofos
- * @date 1/10/2021
  *
  */
 public class Tools {

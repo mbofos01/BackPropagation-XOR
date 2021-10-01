@@ -5,7 +5,6 @@ import java.util.ArrayList;
  * identified by a static counter ID.
  * 
  * @author Michail - Panagiotis Bofos
- * @date 1/10/2021
  *
  */
 

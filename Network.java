@@ -5,7 +5,6 @@ import java.util.ArrayList;
  * neural network and implement the back propagation algorithm.
  * 
  * @author Michail - Panagiotis Bofos
- * @date 1/10/2021
  *
  */
 public class Network {
