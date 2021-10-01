@@ -14,8 +14,17 @@ public class Connection {
 	 *
 	 */
 	public Neuron neuron1;
+	/**
+	 * Neuron two (right)
+	 */
 	public Neuron neuron2;
+	/**
+	 * Weight between neurons
+	 */
 	public double weight;
+	/**
+	 * All past weights
+	 */
 	public ArrayList<Double> weightHistory = new ArrayList<>();
 
 	/**

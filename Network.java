@@ -62,7 +62,7 @@ public class Network {
 	 */
 	static ArrayList<double[]> TEST_INPUTS = new ArrayList<>();
 	/**
-	 * The input values of the testing data. Each array in the arraylist is an ouput
+	 * The input values of the testing data. Each array in the arraylist is an output
 	 * variable, each line in those arrays is a data line.
 	 */
 	static ArrayList<double[]> TEST_OUTPUTS = new ArrayList<>();
@@ -73,7 +73,7 @@ public class Network {
 	 * want to calculate the input) and the incoming layer connections.
 	 * 
 	 * @param x     Neuron The neuron of whom we want to calculate the input
-	 * @param layer ArrayList<Connection> the list of connection coming in to x
+	 * @param layer ArrayList(Connection) the list of connection coming in to x
 	 *              neuron
 	 * @return Double the calculated input
 	 */
@@ -153,7 +153,7 @@ public class Network {
 	 * which generate in the forward passing of the algorithm.
 	 * 
 	 * @param A Neuron array the input neurons
-	 * @param x ArrayList<Connection> the connection of each steps layer
+	 * @param x ArrayList(Connection) the connection of each steps layer
 	 */
 	public static void step(Neuron A[], ArrayList<Connection> x) {
 		for (Neuron a : A)
@@ -193,7 +193,7 @@ public class Network {
 	}
 
 	/**
-	 * This function prints the details of each neuron
+	 * This function prints the details of each neuron.
 	 */
 	public static void printStats() {
 		for (int i = 0; i < INPUT_LAYER; i++)
@@ -316,7 +316,7 @@ public class Network {
 	/**
 	 * This function selects the parameters given by the input file.
 	 * 
-	 * @param list ArrayList<String> all the parameters
+	 * @param list ArrayList(String) all the parameters
 	 */
 	public static void handleParameters(ArrayList<String> list) {
 		SECOND_LAYER = Integer.parseInt(list.get(0));
@@ -364,7 +364,7 @@ public class Network {
 	/**
 	 * Main function
 	 * 
-	 * @param args
+	 * @param args parameters file (.txt)
 	 */
 	public static void main(String[] args) {
 		String filename = "parameters.txt";
@@ -412,7 +412,7 @@ public class Network {
 			epochs++;
 		} while (epochs < EPOCH_LIMIT);
 		chart.feedFile("values.txt", errors);
-		chart.create("values.txt");
+		//chart.create("values.txt");
 		double[] outs = new double[4];
 		for (int i = 0; i < test_size; i++) {
 			for (int j = 0; j < INPUT_LAYER - 1; j++)

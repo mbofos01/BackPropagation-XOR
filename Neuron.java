@@ -23,7 +23,9 @@ public class Neuron {
 	private boolean output = false;
 	private boolean isInput = false;
 	private boolean bias = false;
-
+	/**
+	 * ID giver
+	 */
 	public static int id = 1;
 
 	/**
@@ -178,6 +180,8 @@ public class Neuron {
 
 	/**
 	 * This method set a neuron to output or not.
+	 * 
+	 * @param output boolean true if it is output neuron
 	 */
 	public void setOutput(boolean output) {
 		this.output = output;
@@ -194,6 +198,8 @@ public class Neuron {
 
 	/**
 	 * This method set a neuron to input or not.
+	 * 
+	 * @param isInput boolean true if it is input neuron
 	 */
 	public void setIsInput(boolean isInput) {
 		this.isInput = isInput;

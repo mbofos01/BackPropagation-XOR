@@ -63,8 +63,8 @@ public class Tools {
 	 * 
 	 * (0.5*Ó(target - real)^2)
 	 * 
-	 * @param tpj ArrayList<dDouble> target outputs
-	 * @param opj ArrayList<dDouble> real outputs
+	 * @param tpj ArrayList(Double) target outputs
+	 * @param opj ArrayList(Double) real outputs
 	 * @return double value - error
 	 */
 	public static double error(ArrayList<Double> tpj, ArrayList<Double> opj) {
@@ -79,8 +79,8 @@ public class Tools {
 	/**
 	 * This function reads a parameter file and fills an arraylist with the data.
 	 * 
-	 * @param filename
-	 * @return ArrayList<String> containing the file data
+	 * @param filename parameters file
+	 * @return ArrayList(String) containing the file data
 	 */
 	public static ArrayList<String> getParameters(String filename) {
 		ArrayList<String> list = new ArrayList<>();
@@ -111,9 +111,9 @@ public class Tools {
 	 * This function reads a file and fills two arraylists (of double arrays) with
 	 * the training/testing data.
 	 * 
-	 * @param filename
-	 * @param inputs   ArrayList<double[]>
-	 * @param outputs  ArrayList<double[]>
+	 * @param filename training or testing data file
+	 * @param inputs   ArrayList(double[])
+	 * @param outputs  ArrayList(double[])
 	 */
 	public static void fillData(String filename, ArrayList<double[]> inputs, ArrayList<double[]> outputs) {
 		try {
@@ -140,7 +140,7 @@ public class Tools {
 	/**
 	 * This function counts the lines of a file.
 	 * 
-	 * @param filename
+	 * @param filename file we count the lines
 	 * @return # of lines
 	 */
 	public static int findLines(String filename) {
