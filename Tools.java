@@ -62,7 +62,7 @@ public class Tools {
 	/**
 	 * This function calculates the error of an output.
 	 * 
-	 * (0.5*Ó(target - real)^2)
+	 * (0.5*Ã“(target - real)^2)
 	 * 
 	 * @param tpj ArrayList<dDouble> target outputs
 	 * @param opj ArrayList<dDouble> real outputs
