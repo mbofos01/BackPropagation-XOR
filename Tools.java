@@ -1,5 +1,7 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -159,6 +161,45 @@ public class Tools {
 			e.printStackTrace();
 		}
 		return cnt;
+	}
+
+	/**
+	 * This function creates a text file given an arraylist of strings.
+	 * 
+	 * @param name String the name of the new file
+	 * @param in   Arraylist of string file lines
+	 */
+	public static void feedFile(String name, ArrayList<String> in) {
+
+		try {
+			FileWriter myWriter = new FileWriter(name);
+			for (String a : in) {
+				myWriter.write(a);
+				myWriter.write("\n");
+			}
+			myWriter.close();
+		} catch (IOException e) {
+			System.out.println("An error occurred.");
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * This function is used to check if two arraylist are the same. NOTE: because
+	 * we use double numbers we use math.round to check their equality.
+	 * 
+	 * @param tpj Double vector one
+	 * @param opj Double vector two
+	 * @return True if the vectors are equal, otherwise false
+	 */
+	public static boolean correct(ArrayList<Double> tpj, ArrayList<Double> opj) {
+		if (tpj.size() != opj.size())
+			System.out.println("SOMETHINGS WRONG");
+		for (int i = 0; i < tpj.size(); i++) {
+			if (Math.round(tpj.get(i)) != Math.round(opj.get(i)))
+				return false;
+		}
+		return true;
 	}
 
 }

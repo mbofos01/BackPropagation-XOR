@@ -62,8 +62,8 @@ public class Network {
 	 */
 	static ArrayList<double[]> TEST_INPUTS = new ArrayList<>();
 	/**
-	 * The input values of the testing data. Each array in the arraylist is an output
-	 * variable, each line in those arrays is a data line.
+	 * The input values of the testing data. Each array in the arraylist is an
+	 * output variable, each line in those arrays is a data line.
 	 */
 	static ArrayList<double[]> TEST_OUTPUTS = new ArrayList<>();
 
@@ -376,14 +376,14 @@ public class Network {
 		int test_size = Tools.findLines(test);
 		initNetwork();
 		connectAll();
-		Chart chart = new Chart();
-		ArrayList<Double> errors = new ArrayList<>();
 		int epochs = 0;
+		ArrayList<String> error_txt = new ArrayList<>();
+		ArrayList<String> success_txt = new ArrayList<>();
 		do {
-			ArrayList<Double> opj = new ArrayList<>();
-			ArrayList<Double> tpj = new ArrayList<>();
-
+			double TRAIN_ERROR = 0.0, TRAIN_SUCCESS = 0.0;
 			for (int i = 0; i < train_size; i++) {
+				ArrayList<Double> opj = new ArrayList<>();
+				ArrayList<Double> tpj = new ArrayList<>();
 				for (int j = 0; j < INPUT_LAYER - 1; j++)
 					first[j].setInput(INPUTS.get(j)[i]);
 				step(second, input);
@@ -392,9 +392,20 @@ public class Network {
 				step(fourth, output);
 				spreadDelta(i);
 				changeWeights();
+
+				for (int k = 0; k < OUTPUT_LAYER; k++) {
+					tpj.add(OUTPUTS.get(k)[i]);
+					opj.add(fourth[k].getInput());
+					TRAIN_ERROR += Tools.error(tpj, opj);
+				}
+				if (Tools.correct(tpj, opj))
+					TRAIN_SUCCESS++;
 			}
-			double ERROR = 0.0;
-			for (int i = 0; i < train_size; i++) {
+			TRAIN_SUCCESS = TRAIN_SUCCESS / (train_size * 1.0);
+			double TEST_ERROR = 0.0, TEST_SUCCESS = 0.0;
+			for (int i = 0; i < test_size; i++) {
+				ArrayList<Double> opj = new ArrayList<>();
+				ArrayList<Double> tpj = new ArrayList<>();
 				for (int j = 0; j < INPUT_LAYER - 1; j++)
 					first[j].setInput(TEST_INPUTS.get(j)[i]);
 				step(second, input);
@@ -403,17 +414,24 @@ public class Network {
 				step(fourth, output);
 
 				for (int k = 0; k < OUTPUT_LAYER; k++) {
-					tpj.add(TEST_OUTPUTS.get(k)[i]);
+					tpj.add((double) TEST_OUTPUTS.get(k)[i]);
 					opj.add(fourth[k].getInput());
-					ERROR += Tools.error(tpj, opj);
+					TEST_ERROR += Tools.error(tpj, opj);
 				}
+				if (Tools.correct(tpj, opj))
+					TEST_SUCCESS++;
+
 			}
-			errors.add(ERROR);
 			epochs++;
+			TEST_SUCCESS = TEST_SUCCESS / (test_size * 1.0);
+			error_txt.add(new String(epochs + " \t" + TRAIN_ERROR + " \t" + TEST_ERROR));
+			success_txt.add(new String(epochs + " \t" + (TRAIN_SUCCESS * 100) + "% \t" + (TEST_SUCCESS * 100) + "%"));
+
 		} while (epochs < EPOCH_LIMIT);
-		chart.feedFile("values.txt", errors);
-		//chart.create("values.txt");
-		double[] outs = new double[4];
+		Tools.feedFile("errors.txt", error_txt);
+		Tools.feedFile("successrate.txt", success_txt);
+
+		double[] outs = new double[test_size];
 		for (int i = 0; i < test_size; i++) {
 			for (int j = 0; j < INPUT_LAYER - 1; j++)
 				first[j].setInput(TEST_INPUTS.get(j)[i]);
@@ -423,6 +441,7 @@ public class Network {
 			step(fourth, output);
 			outs[i] = Math.round(fourth[0].getInput());
 		}
+
 		printResults(TEST_OUTPUTS, TEST_INPUTS, outs, test_size);
 	}
 

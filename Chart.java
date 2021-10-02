@@ -22,13 +22,13 @@ public class Chart {
 		}
 	}
 
-	public void feedFile(String name, ArrayList<Double> in) {
+	public void feedFile(String name, ArrayList<String> in) {
 
 		try {
 			FileWriter myWriter = new FileWriter(name);
-			for (Double a : in) {
-				myWriter.write(a + " \n");
-				// myWriter.write("\n");
+			for (String a : in) {
+				myWriter.write(a);
+				myWriter.write("\n");
 			}
 			myWriter.close();
 		} catch (IOException e) {
@@ -40,12 +40,11 @@ public class Chart {
 	public static void main(String[] args) {
 		Chart c = new Chart();
 
-		ArrayList<Double> in = new ArrayList<Double>();
-		in.add((double) 2);
-		in.add((double) 0);
-		// c.feedFile("A.txt", in);
-
-		c.create("values.txt", "values.txt");
+		ArrayList<String> in = new ArrayList<String>();
+		in.add("AS");
+		// in.add("\n");
+		in.add("ASA");
+		c.feedFile("a.txt", in);
 	}
 
 }
