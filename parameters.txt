@@ -4,6 +4,6 @@ numInputNeurons 2
 numOutputNeurons 1
 learningRate 0.3
 momentum 0.2
-maxIterations 2000
+maxIterations 0
 trainFile training.txt
 testFile test.txt
