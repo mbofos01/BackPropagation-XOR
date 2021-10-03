@@ -28,7 +28,7 @@ public class Network {
 	 * Flags used to determine the topology of the network and enable/disable the
 	 * debug mode.
 	 */
-	static boolean inUse1, inUse2, debug = false;
+	static boolean inUse1, inUse2, debug = true;
 	/**
 	 * The names of the training and test input files.
 	 */
@@ -359,6 +359,25 @@ public class Network {
 			inUse2 = true;
 		}
 		fourth = new Neuron[OUTPUT_LAYER];
+		printArguments();
+	}
+
+	/**
+	 * This function prints a table of the arguments.
+	 */
+	public static void printArguments() {
+		System.out.println("            +---------------------------+");
+		System.out.println("            |  Input layer:  " + (INPUT_LAYER - 1) + "          |");
+		System.out.println("            |  Hidden layer: " + (SECOND_LAYER - 1) + "          |");
+		if (THIRD_LAYER != 0)
+			System.out.println("            |  2nd Hidden layer: " + (THIRD_LAYER - 1) + "      |");
+		System.out.println("            |  Output layer: " + OUTPUT_LAYER + "          |");
+		System.out.println("            |  Max epochs: " + EPOCH_LIMIT + "         |");
+		System.out.println("            |  Learning rate: " + R + "       |");
+		System.out.println("            |  Momenmtum: " + M + "           |");
+		System.out.println("            |  Train file: " + train + " |");
+		System.out.println("            |  Test  file: " + test + "     |");
+		System.out.println("            +---------------------------+");
 	}
 
 	/**
