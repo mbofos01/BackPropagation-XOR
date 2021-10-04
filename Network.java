@@ -28,7 +28,7 @@ public class Network {
 	 * Flags used to determine the topology of the network and enable/disable the
 	 * debug mode.
 	 */
-	static boolean inUse1, inUse2, debug = true;
+	static boolean inUse1, inUse2, debug = false;
 	/**
 	 * The names of the training and test input files.
 	 */
