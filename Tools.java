@@ -32,6 +32,19 @@ public class Tools {
 	}
 
 	/**
+	 * This function rounds up a double using custom formula.
+	 * 
+	 * @param x Double number
+	 * @return zero or one
+	 */
+	public static double customRound(double x) {
+		if (x >= 0.9)
+			return 1.0;
+		return 0.0;
+
+	}
+
+	/**
 	 * This function generates random decimal numbers between minus one and one
 	 * excluding zero.
 	 * 
@@ -196,7 +209,7 @@ public class Tools {
 		if (tpj.size() != opj.size())
 			System.out.println("SOMETHINGS WRONG");
 		for (int i = 0; i < tpj.size(); i++) {
-			if (Math.round(tpj.get(i)) != Math.round(opj.get(i)))
+			if (Tools.customRound(tpj.get(i)) != Tools.customRound(opj.get(i)))
 				return false;
 		}
 		return true;
