@@ -226,11 +226,14 @@ public class Tools {
 	public static boolean correct(ArrayList<Double> tpj, ArrayList<Double> opj) {
 		if (tpj.size() != opj.size())
 			System.out.println("SOMETHINGS WRONG");
+		int corrects = 0;
 		for (int i = 0; i < tpj.size(); i++) {
-			if (Tools.customRound(tpj.get(i)) != Tools.customRound(opj.get(i)))
-				return false;
+			if (tpj.get(i) == 0 && opj.get(i) <= 0.1)
+				corrects++;
+			else if (tpj.get(i) == 1 && opj.get(i) >= 0.9)
+				corrects++;
 		}
-		return true;
+		return corrects == tpj.size();
 	}
 
 }
