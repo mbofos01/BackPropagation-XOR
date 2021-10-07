@@ -3,39 +3,31 @@ import sys
 
 values_array_1 = []
 values_array_2 = []
+values_array_3 = []
+with open(sys.argv[1], "r") as grilled_cheese:
+	lines = grilled_cheese.readlines()
+	#print(lines)
 
-f=open(sys.argv[1],"r")
+f=open(sys.argv[1],"r") 
 for line in f:
-    values_array_1.append(float(line.strip('\n')))
-print(values_array_1)
+    a = line.strip('\n')
+    b = a.split(' ')
+    values_array_1.append(float(b[0]))
+    values_array_2.append(float(b[1]))
+    values_array_3.append(float(b[2]))
 
-f=open(sys.argv[2],"r")
-for line in f:
-    values_array_2.append(float(line.strip('\n')))
-print(values_array_2)
+#print(values_array_1)
+#print(values_array_2)
+#print(values_array_3)
 
-x = len(values_array_1)
-counter_array_1 = [x]
-
-for i in range(x-1):
-   counter_array_1.insert(i,i+1) 
-
-x = len(values_array_2)
-counter_array_2 = [x]
-
-for i in range(x-1):
-   counter_array_2.insert(i,i+1) 
-
-
-
-x_max = max(counter_array_1)  + 0.2*max(counter_array_1)
-y_max = max(values_array_1) + 0.2*max(values_array_1)
+x_max = max(values_array_1)  + 0.2*max(values_array_1)
+y_max = max(values_array_2) + 0.2*max(values_array_2)
 
 fig = plt.figure()
 plt.Axes.set_frame_on
 plt.title("Error - Epoch")
-plt.plot(counter_array_1,values_array_1, color = 'green')
-plt.plot(counter_array_2, values_array_2, color = 'purple' )
+plt.plot(values_array_1,values_array_2, color = 'green')
+plt.plot(values_array_1, values_array_3, color = 'purple' )
 
 plt.ylabel('error')
 plt.xlabel('epoch')

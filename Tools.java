@@ -197,6 +197,16 @@ public class Tools {
 		}
 	}
 
+	public static void runPython() {
+		String command = "python 2plots.py errors.txt ";
+		try {
+			Runtime.getRuntime().exec(command);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
 	/**
 	 * This function is used to check if two arraylist are the same. NOTE: because
 	 * we use double numbers we use math.round to check their equality.

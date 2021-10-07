@@ -398,8 +398,7 @@ public class Network {
 		int epochs = 0;
 		ArrayList<String> error_txt = new ArrayList<>();
 		ArrayList<String> success_txt = new ArrayList<>();
-		ArrayList<String> train_error = new ArrayList<>();
-		ArrayList<String> test_error = new ArrayList<>();
+
 		do {
 			double TRAIN_ERROR = 0.0, TRAIN_SUCCESS = 0.0;
 			for (int i = 0; i < train_size; i++) {
@@ -446,17 +445,12 @@ public class Network {
 			epochs++;
 			TEST_SUCCESS = TEST_SUCCESS / (test_size * 1.0);
 
-			error_txt.add(new String(epochs + " \t" + TRAIN_ERROR + " \t" + TEST_ERROR));
-			success_txt.add(new String(epochs + " \t" + (TRAIN_SUCCESS * 100) + "% \t" + (TEST_SUCCESS * 100) + "%"));
-
-			train_error.add(new String(TRAIN_ERROR + " "));
-			test_error.add(new String(TEST_ERROR + " "));
+			error_txt.add(new String(epochs + " " + TRAIN_ERROR + " " + TEST_ERROR));
+			success_txt.add(new String(epochs + " " + (TRAIN_SUCCESS * 100) + "% " + (TEST_SUCCESS * 100) + "%"));
 
 		} while (epochs < EPOCH_LIMIT);
 		Tools.feedFile("errors.txt", error_txt);
 		Tools.feedFile("successrate.txt", success_txt);
-		Tools.feedFile("trainError.txt", train_error);
-		Tools.feedFile("testError.txt", test_error);
 
 		double[] outs = new double[test_size];
 		for (int i = 0; i < test_size; i++) {
@@ -470,6 +464,8 @@ public class Network {
 		}
 
 		printResults(TEST_OUTPUTS, TEST_INPUTS, outs, test_size);
+
+		Tools.runPython();
 
 	}
 
