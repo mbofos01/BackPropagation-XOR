@@ -197,6 +197,12 @@ public class Tools {
 		}
 	}
 
+	/**
+	 * This function runs a Python script to generate a plot using errors.txt file
+	 * 
+	 * NOTE: For this function to run successfully your machine ought to have python
+	 * and matplot library installed
+	 */
 	public static void runPython() {
 		String command = "python 2plots.py errors.txt ";
 		try {
