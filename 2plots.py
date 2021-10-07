@@ -4,8 +4,8 @@ import sys
 values_array_1 = []
 values_array_2 = []
 values_array_3 = []
-with open(sys.argv[1], "r") as grilled_cheese:
-	lines = grilled_cheese.readlines()
+with open(sys.argv[1], "r") as reader:
+	lines = reader.readlines()
 	#print(lines)
 
 f=open(sys.argv[1],"r") 
