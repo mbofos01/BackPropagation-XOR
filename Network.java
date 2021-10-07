@@ -446,7 +446,7 @@ public class Network {
 			TEST_SUCCESS = TEST_SUCCESS / (test_size * 1.0);
 
 			error_txt.add(new String(epochs + " " + TRAIN_ERROR + " " + TEST_ERROR));
-			success_txt.add(new String(epochs + " " + (TRAIN_SUCCESS * 100) + "% " + (TEST_SUCCESS * 100) + "%"));
+			success_txt.add(new String(epochs + " " + (TRAIN_SUCCESS * 100) + " " + (TEST_SUCCESS * 100) + ""));
 
 		} while (epochs < EPOCH_LIMIT);
 		Tools.feedFile("errors.txt", error_txt);
@@ -465,7 +465,8 @@ public class Network {
 
 		printResults(TEST_OUTPUTS, TEST_INPUTS, outs, test_size);
 
-		Tools.runPython();
+		Tools.runPython("error_plot.py", "errors.txt");
+		Tools.runPython("success_plot.py", "successrate.txt");
 
 	}
 

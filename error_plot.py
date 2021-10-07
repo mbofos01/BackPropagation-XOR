@@ -6,7 +6,7 @@ values_array_2 = []
 values_array_3 = []
 with open(sys.argv[1], "r") as reader:
 	lines = reader.readlines()
-	#print(lines)
+	
 
 f=open(sys.argv[1],"r") 
 for line in f:
@@ -15,10 +15,6 @@ for line in f:
     values_array_1.append(float(b[0]))
     values_array_2.append(float(b[1]))
     values_array_3.append(float(b[2]))
-
-#print(values_array_1)
-#print(values_array_2)
-#print(values_array_3)
 
 x_max = max(values_array_1)  + 0.2*max(values_array_1)
 y_max = max(values_array_2) + 0.2*max(values_array_2)
