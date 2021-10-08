@@ -10,4 +10,4 @@ Instructions:
             2) java Network parameters.txt
 
     Unix/Linux:
-            1) Run runXOR.sh
+            1) Run runXOR.sh parameters.txt - or - runXOR.sh parameters.txt -C [if you want to clean up the .class files created]
