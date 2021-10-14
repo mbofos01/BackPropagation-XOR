@@ -445,7 +445,7 @@ public class Network {
 			epochs++;
 			TEST_SUCCESS = TEST_SUCCESS / (test_size * 1.0);
 
-			error_txt.add(new String(epochs + " " + TRAIN_ERROR + " " + TEST_ERROR));
+			error_txt.add(new String(epochs + " " + TRAIN_ERROR / 4 + " " + TEST_ERROR / 4));
 			success_txt.add(new String(epochs + " " + (TRAIN_SUCCESS * 100) + " " + (TEST_SUCCESS * 100) + ""));
 
 		} while (epochs < EPOCH_LIMIT);
